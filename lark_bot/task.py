@@ -79,6 +79,8 @@ def task(jsonl_path):
             break
         else:
             attempt += 1
+    if attempt == num_retry:
+        print("Failed to post to Lark Webhook after {} attempts.".format(num_retry))
     push_results_to_lark_table(papers)
 
 
