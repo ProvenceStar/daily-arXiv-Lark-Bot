@@ -71,7 +71,15 @@ def task(jsonl_path):
 
     # prepend_to_json_file(paper_file, papers)
     # Post to Lark Webhook
-    post_to_lark_webhook(tag, papers, config)
+    num_retry = 5
+    attempt = 0
+    while attempt < num_retry:
+        success = post_to_lark_webhook(tag, papers, config)
+        if success:
+            break
+        else:
+            attempt += 1
+        
     push_results_to_lark_table(papers)
 
 

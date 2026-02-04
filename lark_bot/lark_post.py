@@ -84,9 +84,11 @@ def post_to_lark_webhook(tag: str, papers: list, config: dict):
     if response.status_code == 200:
         print("Request successful")
         print("Response:\n{}".format(response.json()))
+        return True
     else:
         print("Request failed, status code: {}".format(response.status_code))
         print("Response:\n{}".format(response.text))
+        return False
 
 
 if __name__ == '__main__':
