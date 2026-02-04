@@ -79,7 +79,6 @@ def task(jsonl_path):
             break
         else:
             attempt += 1
-        
     push_results_to_lark_table(papers)
 
 
